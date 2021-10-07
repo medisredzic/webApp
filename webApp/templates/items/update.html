@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit "{{ item['itemName'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="item">
+
+    <label for="itemName">Item Name</label>
+    <input name="itemName" id="itemName"
+      value="{{ request.form['itemName'] or item['itemName'] }}" required>
+
+    <label for="wholesaleprice">Wholesale Price</label>
+    <input name="wholesaleprice" id="wholesaleprice"
+           value="{{ request.form['wholesaleprice'] or item['wholesalePrice'] }}">
+
+    <label for="retailprice">Retail Price</label>
+    <input name="retailprice" id="retailprice"
+           value="{{ request.form['retailprice'] or item['retailPrice'] }}">
+
+    <label for="stock">Stock</label>
+    <input name="stock" id="stock"
+           value="{{ request.form['stock'] or item['stock'] }}">
+
+    <label for="barcode">Bar Code</label>
+    <input name="barcode" id="barcode"
+           value="{{ request.form['barcode'] or item['barCode'] }}">
+
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+    <form action="{{ url_for('items.delete', item_id=item['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}

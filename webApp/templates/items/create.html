@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Item{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="itemName">Item Name</label>
+    <input name="itemName" id="itemName" value="{{ request.form['itemName'] }}" required>
+      <label for="wholesalePrice">Wholesale Price</label>
+    <input name="wholesalePrice" id="wholesalePrice" value="{{ request.form['wholesalePrice'] }}" required>
+      <label for="retailPrice">Retail Price</label>
+    <input name="retailPrice" id="retailPrice" value="{{ request.form['retailPrice'] }}" required>
+      <label for="stock">Stock</label>
+    <input name="stock" id="stock" value="{{ request.form['stock'] }}" required>
+      <label for="barcode">Barcode</label>
+    <input name="barcode" id="barcode" value="{{ request.form['barcode'] }}" required>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

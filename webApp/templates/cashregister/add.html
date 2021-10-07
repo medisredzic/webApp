@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Items{% endblock %}</h1>
+  {% if g.user %}
+      <button onclick="myFunction()">Add Item</button>
+  {% endif %}
+    <p id="addItemJs2" style="display:none">Test test test</p>
+{% endblock %}
+
+{% block content %}
+  {% for key in addList %}
+    <article class="key">
+      <header>
+        <div>
+          <h1>{{ key }}</h1>
+          <div class="about">Stock {{ addList['key'][1] }}</div>
+        </div>
+      </header>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+<script>
+    document.getElementById("addItemJs2").style.display = "none";
+function myFunction()
+{
+    var x = document.getElementById("addItemJs2")
+    if (x.style.display === "none")
+    {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>

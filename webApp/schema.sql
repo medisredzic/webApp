@@ -41,6 +41,7 @@ CREATE TABLE itemsSold(
     billId INTEGER NOT NULL,
     itemId INTEGER NOT NULL,
     soldAt FLOAT NOT NULL,
+    stock INTEGER NOT NULL,
     FOREIGN KEY(billId) REFERENCES bills(id),
     FOREIGN KEY(itemId) REFERENCES items(id)
 );

@@ -6,7 +6,7 @@ from flask import Flask
 def create_app(test_config = None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        SECRET_KEY = 'dev',
+        SECRET_KEY = 'iHG4U7L7XY5e3bfN92B6NqplKI6wSRIf',
         DATABASE = os.path.join(app.instance_path, 'webApp.sqlite'),
     )
 
@@ -31,5 +31,6 @@ def create_app(test_config = None):
 
     from . import cashregister
     app.register_blueprint(cashregister.bp)
+    app.add_url_rule('/', endpoint='index')
 
     return app

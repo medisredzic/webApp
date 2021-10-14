@@ -8,6 +8,7 @@ from webApp.db import get_db
 
 bp = Blueprint('items', __name__, url_prefix='/items')
 
+
 @bp.route('/')
 def index():
     db = get_db()

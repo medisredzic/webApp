@@ -3,37 +3,22 @@
 {% block header %}
   <h1>{% block title %}Items{% endblock %}</h1>
   {% if g.user %}
-      <button onclick="myFunction()">Add Item</button>
+      <a class="action" href="{{ url_for('cashregister.add') }}">Add item</a>
   {% endif %}
-    <p id="addItemJs2" style="display:none">Test test test</p>
 {% endblock %}
 
 {% block content %}
-  {% for key in addList %}
     <article class="key">
       <header>
         <div>
-          <h1>{{ key }}</h1>
-          <div class="about">Stock {{ addList['key'][1] }}</div>
+            <form method="post">
+          <label for="itemid">Item Id</label>
+        <input name="itemid" id="itemid" value="{{ request.form['itemid'] }}" required>
+        <label for="stock">Stock</label>
+        <input name="stock" id="stock" value="{{ request.form['stock'] }}" required>
+            <input type="submit" value="Save">
+            </form>
         </div>
       </header>
     </article>
-    {% if not loop.last %}
-      <hr>
-    {% endif %}
-  {% endfor %}
 {% endblock %}
-
-<script>
-    document.getElementById("addItemJs2").style.display = "none";
-function myFunction()
-{
-    var x = document.getElementById("addItemJs2")
-    if (x.style.display === "none")
-    {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
